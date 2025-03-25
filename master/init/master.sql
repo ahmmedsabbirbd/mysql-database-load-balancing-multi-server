@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS replicated_db;
+USE replicated_db;
+
+CREATE TABLE IF NOT EXISTS example (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data VARCHAR(255)
+);
+
+INSERT INTO example (data) VALUES ('Initial data');
+
+CREATE USER 'repl'@'%' IDENTIFIED WITH mysql_native_password BY 'repl_password';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%';
+FLUSH PRIVILEGES;
+FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;
+UNLOCK TABLES;

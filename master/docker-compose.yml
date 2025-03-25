@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  master:
+    image: mysql:8.0
+    container_name: master
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
+    command: --server-id=1
+
+    volumes:
+      - master_data:/var/lib/mysql
+      - ./init/master.sql:/docker-entrypoint-initdb.d/master.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - mysql_net
+
+volumes:
+  master_data:
+
+networks:
+  mysql_net:
+    driver: bridge
