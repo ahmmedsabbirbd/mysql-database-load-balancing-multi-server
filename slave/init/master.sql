@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS example (
 
 INSERT INTO example (data) VALUES ('Initial data');
 
-CREATE USER 'repl'@'192.168.68.101' IDENTIFIED WITH mysql_native_password BY 'repl_password';
-GRANT REPLICATION SLAVE ON *.* TO 'repl'@'192.168.68.101';
+CREATE USER 'repl'@'%' IDENTIFIED WITH mysql_native_password BY 'repl_password';
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%';
 FLUSH PRIVILEGES;
 FLUSH TABLES WITH READ LOCK;
 SHOW MASTER STATUS;
