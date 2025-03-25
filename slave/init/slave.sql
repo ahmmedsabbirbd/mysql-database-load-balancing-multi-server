@@ -1,7 +1,6 @@
 CHANGE MASTER TO
     MASTER_HOST='192.168.68.101',
-    MASTER_USER='repl',
-    MASTER_PORT=3306,
+    MASTER_USER='repl', 
     MASTER_PASSWORD='repl_password',
     MASTER_LOG_FILE='mysql-bin.000008',
     MASTER_LOG_POS=157; -- Update this with the correct position from the master's output
@@ -14,7 +13,7 @@ START SLAVE;
 -- CHANGE MASTER TO
 --     MASTER_HOST='192.168.68.101',
 --     MASTER_USER='repl',
-    -- MASTER_PORT=3306,
+    -- MASTER_PORT=3307, ***********************************************************if your use only default port then not use the _MASTER_PORT=3307_********************************** 
 --     MASTER_PASSWORD='repl_password',
 --     MASTER_LOG_FILE='mysql-bin.000008',
 --     MASTER_LOG_POS=157; -- Update this with the correct position from the master's output
